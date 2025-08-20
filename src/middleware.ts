@@ -1,5 +1,8 @@
-// import { auth } from "./auth";
+// import { auth } from "../auth";
 // import { NextResponse } from "next/server";
+
+import { NextResponse } from "next/server";
+import { auth } from "../auth";
 
 // export default auth((req) => {
 //   const path = req.nextUrl.pathname;
@@ -23,9 +26,16 @@
 //   matcher: ["/generate-program/:path*", "/profile/:path*"],
 // };
 
-import { NextResponse } from "next/server";
+export default auth((req) => {
+  console.log("🔍 Middleware auth session:", req.auth);
 
-export function middleware(req: Request) {
-  console.log("MIDDLEWARE is running on:", req.url);
+  if (
+    !req.auth &&
+    (req.nextUrl.pathname.startsWith("/generate-program") ||
+      req.nextUrl.pathname.startsWith("/profile"))
+  ) {
+    return NextResponse.redirect(new URL("/login", req.url));
+  }
+
   return NextResponse.next();
-}
+});
