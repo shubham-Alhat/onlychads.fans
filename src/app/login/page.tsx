@@ -1,4 +1,4 @@
-import { Hero1 } from "@/components/hero1";
+import { Hero1 } from "@/components/LoginPage";
 import React from "react";
 
 function Login() {
