@@ -32,10 +32,13 @@ const HomePage = () => {
               <div className="h-px w-full bg-gradient-to-r from-primary via-accent to-primary opacity-50"></div>
 
               <p className="text-xl text-muted-foreground w-2/3">
-                OnlyChads.fans is the ultimate place for men who want to level
-                up their physique, their mindset, and their life. No excuses. No
-                fluff. Just pure discipline and results that transform you into
-                the man everyone notices when you walk in.
+                <span className="font-semibold bg-background text-foreground">
+                  OnlyChads.fans
+                </span>{" "}
+                is the ultimate place for men who want to level up their
+                physique, their mindset, and their life. No excuses. No fluff.
+                Just pure discipline and results that transform you into the man
+                everyone notices when you walk in.
               </p>
 
               {/* STATS */}
@@ -67,7 +70,7 @@ const HomePage = () => {
                 <Button
                   size="lg"
                   asChild
-                  className="overflow-hidden bg-secondary text-secondary-foreground px-8 py-6 text-lg font-medium hover:bg-secondary hover:text-secondary-foreground"
+                  className="overflow-hidden bg-secondary text-secondary-foreground px-8 py-6 text-lg font-medium hover:bg-background hover:text-foreground hover:border-primary hover:border"
                 >
                   <Link
                     href={"/generate-program"}

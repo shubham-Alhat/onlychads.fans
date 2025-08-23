@@ -1,7 +1,16 @@
+"use server";
 import { Hero1 } from "@/components/LoginPage";
 import React from "react";
+import { auth } from "../../../auth";
+import { redirect } from "next/navigation";
 
-function Login() {
+async function Login() {
+  const session = await auth();
+
+  if (session && session.user) {
+    redirect("/profile");
+  }
+
   return (
     <>
       <Hero1 />

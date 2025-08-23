@@ -1,4 +1,6 @@
+"use client";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { login } from "@/lib/auth.action";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -62,9 +64,10 @@ const Hero1 = ({
               {buttons.primary && (
                 <Button
                   asChild
-                  className="w-full sm:w-auto font-semibold hover:bg-accent hover:text-accent-foreground"
+                  onClick={() => login()}
+                  className="w-full sm:w-auto font-semibold hover:bg-accent hover:text-accent-foreground cursor-pointer"
                 >
-                  <a href={buttons.primary.url}>{buttons.primary.text}</a>
+                  <span>{buttons.primary.text}</span>
                 </Button>
               )}
               {buttons.secondary && (
