@@ -1,8 +1,16 @@
-import { DumbbellIcon, HomeIcon, UserIcon, ZapIcon } from "lucide-react";
+import {
+  DumbbellIcon,
+  HomeIcon,
+  LogOut,
+  UserIcon,
+  ZapIcon,
+} from "lucide-react";
 import Link from "next/link";
 import { Button } from "./ui/button";
 
 import { auth } from "../../auth";
+import { logout } from "@/lib/auth.action";
+import { SignOutButton } from "./SignOutButton";
 
 const Navbar = async () => {
   const session = await auth();
@@ -47,17 +55,13 @@ const Navbar = async () => {
                 <UserIcon size={16} />
                 <span>Profile</span>
               </Link>
-              <Button
-                asChild
-                className="ml-2 border-foreground text-foreground bg-primary hover:bg-accent hover:border-foreground"
-              >
-                <Link href="/generate-program">Get Started</Link>
-              </Button>
+
+              <SignOutButton />
             </>
           ) : (
             <>
               <Button className="bg-background text-foreground border border-foreground hover:bg-muted">
-                Sign Up
+                <Link href={"/login"}>Sign Up</Link>
               </Button>
             </>
           )}
